@@ -1,0 +1,12 @@
+{
+    "env": "development",
+    "dbConfig": {
+        "host": "localhost",
+        "database": "herd-server",
+        "port": 27017
+    },
+    "shopifyApiKey":"c2fc19d4e70f5fc37a5fe21f183ee31b",
+    "shopifyApiSecret":"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",
+    "secretKey": "secretKey",
+    "clientCallbackUrl": "0c78d7404ca5.ngrok.io"
+}
