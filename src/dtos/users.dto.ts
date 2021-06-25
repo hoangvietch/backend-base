@@ -7,7 +7,7 @@ export class CreateUserDto {
   public first_name: string;
   @IsString()
   public last_name: string;
-  @IsString()
+  @IsOptional()
   public plan: string;
   @IsOptional()
   public payment_reference_id: string;

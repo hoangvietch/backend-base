@@ -2,11 +2,10 @@
     "env": "development",
     "dbConfig": {
         "host": "localhost",
-        "database": "herd-server",
+        "database": "stimulating_purchase",
         "port": 27017
     },
-    "shopifyApiKey":"c2fc19d4e70f5fc37a5fe21f183ee31b",
-    "shopifyApiSecret":"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",
-    "secretKey": "secretKey",
-    "clientCallbackUrl": "0c78d7404ca5.ngrok.io"
+    "apiKey": "dbe04f7b9e090aaabccaa0d3aa81e4d7",
+    "secretKey": "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",
+    "secretKeyJwt": "stimulating_pucharse_v1"
 }

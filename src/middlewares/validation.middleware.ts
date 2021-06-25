@@ -17,7 +17,6 @@ const validationMiddleware = (
         next(new HttpException(400, message));
       } else {
         next();
-        console.log('passs')
       }
     });
   };

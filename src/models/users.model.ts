@@ -16,7 +16,7 @@ const userSchema: Schema = new Schema({
   country: String,
   plan: {
     type: String,  
-    enum: ['free','medium','pro'], 
+    enum: ['free','pro'], 
     default: "free",
   },
  address_country: String,

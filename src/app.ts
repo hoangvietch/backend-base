@@ -3,10 +3,7 @@ process.env['NODE_CONFIG_DIR'] = __dirname + '/configs';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-// @ts-ignore
-import ect from 'ect';
 import express from 'express';
-import session from 'express-session';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
@@ -15,6 +12,8 @@ import { dbConnection } from '@databases';
 import Routes from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
+import authMiddleware from '@/middlewares/auth.middleware';
+
 
 class App {
   public app: express.Application;
@@ -26,7 +25,7 @@ class App {
     this.app = express();
     this.port = process.env.PORT || 3000;
     this.env = process.env.NODE_ENV || 'development';
-    this.ectRender = ect({ watch: true, root: __dirname + './views', ext : '.ect' });
+   
     this.connectToDatabase();
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
@@ -60,23 +59,15 @@ class App {
       this.app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
     } else {
       this.app.use(morgan('dev', { stream }));
-      this.app.use(cors({ origin: true, credentials: true }));
+      this.app.use(cors({ origin: "*", credentials: true }));
     }
-    this.app.use(session({
-      secret: 'eo3Athuo4Ang5gai',
-      saveUninitialized: false,
-      resave: false
-    }));
-    // this.app.use(helmet.frameguard({ action: 'SAMEORIGIN' }));
-
-    this.app.set('view engine', 'ect');
-    this.app.engine('ect', this.ectRender.render)
     this.app.use(hpp());
     this.app.use(helmet());
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    this.app.use(authMiddleware)
   }
 
   private initializeRoutes(routes: Routes[]) {
