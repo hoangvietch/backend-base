@@ -11,7 +11,7 @@ export class CreateStoreDto {
   
 }
 export class UpdateStoreDto {
-  
+
   @IsOptional()
   public name: string;
   @IsOptional()

@@ -1,5 +1,5 @@
 import { model, Schema, Document } from 'mongoose';
-import { User } from '@interfaces/users.interface';
+import { User } from '@/interfaces/user.interface';
 
 const userSchema: Schema = new Schema({
   email: {
@@ -14,11 +14,6 @@ const userSchema: Schema = new Schema({
     type: String
   },
   country: String,
-  plan: {
-    type: String,  
-    enum: ['free','pro'], 
-    default: "free",
-  },
  address_country: String,
  address_city: String,
  address_line1: String,

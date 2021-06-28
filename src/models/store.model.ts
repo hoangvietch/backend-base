@@ -12,6 +12,16 @@ const schema: Schema = new Schema({
     required: true
   },
   scope: String,
+  free_trial: {
+    type: Boolean,
+    default: true
+  },
+  exp_date: Date,
+  current_plan: {
+    type: String,
+    default: 'pro',
+    enum: ['free','pro'], 
+  },
   status: {
     type: String,
     default: 'active',
